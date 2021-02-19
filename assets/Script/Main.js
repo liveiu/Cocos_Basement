@@ -34,9 +34,9 @@ cc.Class({
     },
 
     playerMoveLeft:function(){
-        var goLeft= cc.moveTo(0.2,cc.p(-this.node.width/2+80,this.player.getPositionY()));
-        var goL1= cc.moveTo(0.1,cc.p(-this.node.width/2+80+30,this.player.getPositionY()));
-        var goL2= cc.moveTo(0.1,cc.p(-this.node.width/2+80,this.player.getPositionY()));
+        var goLeft= cc.moveTo(0.2,cc.v2(-this.node.width/2+80,this.player.y));
+        var goL1= cc.moveTo(0.1,cc.v2(-this.node.width/2+80+30,this.player.y));
+        var goL2= cc.moveTo(0.1,cc.v2(-this.node.width/2+80,this.player.y));
         var sque=cc.sequence(goL1,goL2);
         
         if(this.player.rotationY==0)
@@ -51,9 +51,9 @@ cc.Class({
         
     },
     playerMoveRight:function(){
-        var goRight= cc.moveTo(0.2,cc.p(this.node.width/2-80,this.player.getPositionY()));
-        var goR1= cc.moveTo(0.1,cc.p(this.node.width/2-80-30,this.player.getPositionY()));
-        var goR2= cc.moveTo(0.1,cc.p(this.node.width/2-80,this.player.getPositionY()));
+        var goRight= cc.moveTo(0.2,cc.v2(this.node.width/2-80,this.player.y));
+        var goR1= cc.moveTo(0.1,cc.v2(this.node.width/2-80-30,this.player.y));
+        var goR2= cc.moveTo(0.1,cc.v2(this.node.width/2-80,this.player.y));
         var sque=cc.sequence(goR1,goR2);
        
         if(this.player.rotationY==180){
@@ -97,7 +97,7 @@ cc.Class({
         }else{
             randY=(this.node.height/2)-(this.dc_duration*8)-this.dc_duration*1;
         }
-        return cc.p(randX,randY);
+        return cc.v2(randX,randY);
     },
     
     //监听玩家操控
