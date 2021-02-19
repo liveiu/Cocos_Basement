@@ -15,7 +15,7 @@ cc.Class({
         var listener = {
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             onTouchBegan: function (touches, event) {
-                var goAction= cc.moveBy(0.2,cc.p(0,140));
+                var goAction= cc.moveBy(0.2,cc.v2(0,140));
                 self.node.runAction(goAction);
                 return true; //这里必须要写 return true
             },
@@ -37,8 +37,8 @@ cc.Class({
      update: function (dt) {
         var player = cc.find("Canvas/normal").getComponent(tmpPlayer);
 
-        if(cc.rectIntersectsRect(player.node.getBoundingBoxToWorld(),this.noteBox())){
-            
+        //if(cc.rectIntersectsRect(player.node.getBoundingBoxToWorld(),this.noteBox())){
+            if(player.node.getBoundingBoxToWorld().intersects(this.noteBox())){
             cc.audioEngine.playEffect(this.dieAudio,false);
             cc.director.loadScene('OverScene');
            //cc.log('碰撞');
